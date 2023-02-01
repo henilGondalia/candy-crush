@@ -1,0 +1,155 @@
+$bg-color: linear-gradient(234deg, #ff9900, #fe03b9, #00fff2);
+$firstShadowColor: rgb(236, 236, 236);
+$secondShadowColor: rgba(52, 52, 52, 0.277);
+.login {
+    background-color: #dbddde;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: cinzel !important;
+    overflow: hidden;
+    transition: all 400ms;
+}
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .login-inner {
+        font-family: "Nosifer", cursive;
+        background: #dbddde;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 370px;
+        padding: 1rem;
+        border: 1px solid rgba(51, 51, 51, 0.136);
+        box-shadow: inset -4px -4px 5px $firstShadowColor, inset 4px 4px 5px  $secondShadowColor;
+    }
+
+    h2 {
+        width: fit-content;
+        text-align: center;
+        background: $bg-color;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.5rem;
+        transition: all 400ms;
+        text-transform: uppercase;
+    }
+
+    .user-box {
+        position: relative;
+        margin-bottom: 2em;
+        margin-top: 2em;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        input {
+            min-width: 300px;
+            padding: 1rem;
+            font-size: 1rem;
+            border: solid 1.5px #ffffff;
+            background: transparent;
+            border-radius: 1rem;
+            line-height: 2rem;
+            box-shadow: inset -4px -4px 5px $firstShadowColor, inset 4px 4px 5px  $secondShadowColor;
+        }
+
+        label {
+            position: absolute;
+            left: 15px;
+            color: rgb(80, 78, 78);
+            pointer-events: none;
+            transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition-timing-function: ease-in-out;
+
+            top:10px;
+            padding: 10px 0;
+            font-size: 16px;
+            // transition: .5s;
+        }
+
+        input:focus ~ label,
+        input:valid ~ label {
+            top: -12px;
+            left: 15px;
+            font-size: 16px;
+            background-color: #dbddde;
+            padding: 0 0.2em;
+            color: #000000;
+            font-weight: 600;
+            letter-spacing: 1.3px;
+        }
+
+        input:focus:invalid {
+            border: 1px solid red;
+        
+            ~label {
+                color: red;
+            }
+        }
+        
+        input:focus:valid {
+            border: 1px solid green;
+        
+            ~label {
+                color: green;
+            }
+        }
+    }
+
+    button {
+        padding: 1rem;
+        font-family: "Nosifer", cursive;
+        cursor: pointer;
+        border: 1px solid rgb(255, 254, 254);
+        font-size: 1em;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        border-radius: 10px;
+        margin-top: 2rem;
+        color: #131313;
+        background: transparent;
+        text-transform: uppercase;
+        box-shadow: -4px -4px 5px $firstShadowColor, 4px 4px 5px $secondShadowColor;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background:linear-gradient(90deg, #00b3ff, #d40dbd, #ffb006);
+            z-index: -1;
+            box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+            transition: all 250ms;
+        }
+    
+        &:hover {
+            border: none;
+            -webkit-text-fill-color: #fff;
+            box-shadow: 5px 5px 42px #8c00ff,
+                -5px -1px 42px #ff009d,
+                0 0 82px #03fffb;
+            transition: all 400ms ease-in;
+    
+            &::before {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+}

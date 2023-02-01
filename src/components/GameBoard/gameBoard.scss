@@ -1,0 +1,102 @@
+.game{
+    font-family: "Nosifer", cursive;
+    font-weight: 900;
+}
+.header-line {
+    height: 0.3em;
+    width: 100vw;
+    background-color: #fad8de;
+    box-shadow: 0px 2px 3px 0px #b7949b;
+    -webkit-box-shadow: 0px 2px 3px 0px #b7949b;
+    -moz-box-shadow:0px 2px 3px 0px #b7949b;
+    z-index: 2;
+    position: fixed;
+}
+.user {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    width: 10%;
+    left: 45%;
+    padding: 0.5em;
+    font-size: 0.7em;
+    letter-spacing: 1.3px;
+    background-color: #fad8de;
+    color: #f38094;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    box-shadow: 0px 2px 3px 0px #b7949b;
+    -webkit-box-shadow: 0px 2px 3px 0px #b7949b;
+    -moz-box-shadow:0px 2px 3px 0px #b7949b;
+    z-index: 5;
+}
+.game-status {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    color: white;
+    background: repeating-linear-gradient(
+        -45deg,
+        #f38094,
+        #f38094 15px,
+        #fad8de 15px,
+        #fad8de 30px
+    );
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    -webkit-box-shadow: 0px -2px 20px 0px #00000070 inset;
+    -moz-box-shadow: 0px -2px 20px 0px #00000070 inset;
+    box-shadow: 0px -2px 20px 0px #00000070 inset;
+}
+// .game-status::before {
+// 	content: "";
+//     position: absolute;
+//     color: white;
+//     width: 40px;
+//     height: 40px;
+//     right: 8px;
+//     top: 4%;
+//     background: radial-gradient(circle at 100% 100%, #ffffff -5%, rgba(255, 255, 0, 0) 50%);
+//     border-radius: 1rem;
+// }
+
+// .game-status::after {
+// 	content: "";
+//     position: absolute;
+//     color: white;
+//     width: 40px;
+//     height: 40px;
+//     left: 8px;
+//     top: 4%;
+//     background: radial-gradient(circle at 40% 100%, #ffffff -5%, rgba(255, 255, 0, 0) 50%);
+//     border-radius: 1rem;
+//     z-index: 5;
+// }
+
+.score {
+    background-color: #e17789;
+    border: 1px #f4f4f4 solid;
+    border-radius: 20px;
+    position: relative;
+    width: 40%;
+    height: fit-content;
+
+    .score-bar {
+        padding: 1px 4px;
+        text-align: center;
+        width: 30%;
+        border-radius: 20px;
+        background: #1082e5;
+    }
+}
+
+.target {
+    background-color: #e17789;
+    border: 1px #f4f4f4 solid;
+    border-radius: 20px;
+    position: relative;
+    width: 40%;
+    padding: 1%;
+    text-align: center;
+}
