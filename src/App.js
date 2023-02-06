@@ -5,6 +5,7 @@ import GameBoard from './components/GameBoard/GameBoard';
 function App() {
   const [logged, setLogged] = useState(false);
   const [userName, setuserName] = useState(null);
+  const [moves, setMoves] = useState(20);
 
   const saveData = (userName) => {
     if(userName){
@@ -17,7 +18,7 @@ function App() {
   return (
     <div className="main">
       {logged ? (
-        <GameBoard userName={userName}/>
+        <GameBoard userName={userName} moves={moves}/>
         ): (
         <Login saveData={saveData}/>
       )}

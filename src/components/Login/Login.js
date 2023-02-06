@@ -21,7 +21,7 @@ const Login = ({saveData}) => {
           <button className="submit-btn" onClick={() => saveData(userName)}>Start Game</button>
         </div>
       </div>
-      <div class="footer">
+      <div className="footer">
           <footer>made with ❤️ | ©️2023</footer>
       </div>
     </div>
