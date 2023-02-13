@@ -7,6 +7,7 @@ import RedCandy from '../../assets/red-candy.png';
 import YellowCandy from '../../assets/blue-candy.png';
 import Blank from '../../assets/blank.png';
 import './gameBoard.scss';
+import { confetti } from "https://cdn.jsdelivr.net/npm/tsparticles-confetti/+esm";
 
 const width = 8;
 const candyColors = [
@@ -23,6 +24,50 @@ const GameBoard = ({userName, moves}) => {
     const [draggingSquare, setDraggingSquare] = useState(null);
     const [replaceSquare, setReplaceSquare] = useState(null);
     const [scoreDisplay, setScoreDisplay] = useState(0);
+    const [displayMsg, setDisplayMsg] = useState("Way to go!");
+    const duration = 6 * 1000, animationEnd = Date.now() + duration,defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    const randomInRange = (min, max) => {
+      return Math.random() * (max - min) + min;
+    }
+
+    const celebrate = () => {
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+    
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+      
+        const particleCount = 50 * (timeLeft / duration);
+      
+          // since particles fall down, start a bit higher than random
+          confetti(
+            Object.assign({}, defaults, {
+              particleCount,
+              origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+            })
+          );
+          confetti(
+            Object.assign({}, defaults, {
+              particleCount,
+              origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+            })
+          );
+        }, 250);
+    }
+
+    const updateMsg = () => {
+      if(scoreDisplay >= 100){
+        celebrate();
+      }else if(scoreDisplay > 80){
+        setDisplayMsg("Delicious!!!")
+      }else if(scoreDisplay > 50){
+        setDisplayMsg("Sweet!!")
+      }else if(scoreDisplay > 10){
+        setDisplayMsg("Testy!")
+      }
+    }
 
     const createBoard = () => {
         const rendomColorArrangment = [];
@@ -139,8 +184,6 @@ const GameBoard = ({userName, moves}) => {
     };
 
     const dragEnd = (e) => {
-        console.log("draging")
-        debugger;
         const draggingSquareId = parseInt(draggingSquare.getAttribute('data-id'));
         const replaceSquareId = parseInt(replaceSquare.getAttribute('data-id'));
         currColorArrangement[replaceSquareId] = draggingSquare.getAttribute('src');
@@ -178,12 +221,14 @@ const GameBoard = ({userName, moves}) => {
 
     useEffect(() => {
         const timer = setInterval(() => {
+          console.log("Checking every 1ms")
           checkForColumnOfFour();
           checkForColumnOfThree();
           checkForRowOfFour();
           checkForRowOfThree();
           moveSqureDown();
           setCurrColorArrangement([...currColorArrangement]);
+          updateMsg();
         }, 100);
         return () => clearInterval(timer);
       }, [
@@ -206,17 +251,23 @@ const GameBoard = ({userName, moves}) => {
                             <span className="progress-bar__text">{scoreDisplay}</span>
                         </div>
                     </div>
-                    <div className='target'>{moves}</div>
+                    <div className='target'>{displayMsg}</div>
                 </div>
             </div>
             <div className='game-board'>
+              {scoreDisplay >= 100 && (
+                <div className='winner-pop'>
+                  DELICIOUS!!!
+                  <br/><button className="restart-btn" onClick={() => setScoreDisplay(0)}>Restart</button>
+                </div>
+              )}
             {currColorArrangement.map((candyColor, index) => (
                 <img
                     key={index}
                     src={candyColor}
                     alt="candy"
                     data-id={index}
-                    draggable={true}
+                    draggable={scoreDisplay>=100 ? false: true}
                     onDragStart={dragStart}
                     onDragOver={(e) => e.preventDefault()}
                     onDragEnter={(e) => e.preventDefault()}
@@ -225,7 +276,7 @@ const GameBoard = ({userName, moves}) => {
                     onDragEnd={dragEnd}
                 />
                 ))}
-            </div>
+            </div> 
         </div>
     )
 }

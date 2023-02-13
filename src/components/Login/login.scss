@@ -1,8 +1,9 @@
-$bg-color: linear-gradient(234deg, #ff9900, #fe03b9, #00fff2);
-$firstShadowColor: rgb(236, 236, 236);
+$text-color: linear-gradient(234deg, #ff9900, #fe03b9, #00fff2);
+$bg-color: linear-gradient(180deg,rgba(203,242,248,.78),rgba(252,138,227,.78));
+$firstShadowColor: rgb(247 177 236 / 84%),;
 $secondShadowColor: rgba(52, 52, 52, 0.277);
 .login {
-    background-color: #dbddde;
+    background: $bg-color;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +20,7 @@ $secondShadowColor: rgba(52, 52, 52, 0.277);
 
     .login-inner {
         font-family: "Nosifer", cursive;
-        background: #dbddde;
+        background: #e0e0f5;
         border-radius: 20px;
         display: flex;
         justify-content: center;
@@ -34,7 +35,7 @@ $secondShadowColor: rgba(52, 52, 52, 0.277);
     h2 {
         width: fit-content;
         text-align: center;
-        background: $bg-color;
+        background: $text-color;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -81,7 +82,7 @@ $secondShadowColor: rgba(52, 52, 52, 0.277);
             top: -12px;
             left: 15px;
             font-size: 16px;
-            background-color: #dbddde;
+            background-color: #e0e0f5;
             padding: 0 0.2em;
             color: #000000;
             font-weight: 600;
